@@ -1,96 +1,303 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script defer src="/_vercel/insights/script.js"></script>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@exampledev/new.css@1.1.2/new.min.css"
-    />
-    <title>Vercel HTML Starter</title>
-    <meta
-      name="description"
-      content="High-performance HTML based website template."
-    />
-  </head>
-  <body>
-    <h1>Vercel HTML Starter</h1>
-    <p>
-      This template is a simple, but powerful single
-      <code>index.html</code> file deployed to
-      <a href="https://vercel.com">Vercel</a>. When your site is deployed, all
-      static assets (like HTML, JavaScript, CSS, images, and more) are deployed
-      globally to every
-      <a href="https://vercel.com/docs/concepts/edge-network/overview"
-        >Vercel Edge Network</a
-      >
-      region.
-    </p>
-    <h2>Simple, privacy-friendly analytics</h2>
-    <p>
-      Want to understand your visitor traffic? Vercel Analytics gives you
-      first-party, privacy-friendly traffic analytics for your HTML site. This
-      template is already configured using the following script:
-    </p>
-    <pre><code>&lt;script defer src="/_vercel/insights/script.js"&gt;&lt;/script&gt;</code></pre>
-    <p>
-      Learn more about
-      <a href="https://vercel.com/analytics">Vercel Analytics</a>.
-    </p>
-    <h2>Integrated with git</h2>
-    <p>
-      Deploying updates to your site is as simple as
-      <code>git push</code> thanks to Vercel's advanced
-      <a href="https://vercel.com/docs/concepts/git">Git Integration</a>.
-      Support for GitHub, GitLab, Bitbucket is zero-configuration, and with the
-      flexible Vercel CLI and API, you can integrate with any tool possible.
-    </p>
-    <p>
-      Learn more about
-      <a href="https://vercel.com/docs/concepts/git">Git Integration</a>.
-    </p>
-    <h2>Fast <code>gzip</code> compression</h2>
-    <p>
-      To help ensure the smallest possible file sizes for your static assets,
-      the Vercel Edge Network compresses files by default using
-      <code>gzip</code>. You can also optionally use
-      <code>brotli</code> compressesion if you prefer.
-    </p>
-    <p>
-      Learn more about
-      <a href="https://vercel.com/docs/concepts/edge-network/compression"
-        >compression</a
-      >.
-    </p>
-    <h2>Advanced routing configuration</h2>
-    <p>
-      Vercel gives you a variety of ways to configure the routing of your
-      website. For example, adding redirects, rewrites, or headers to your page.
-      While you can use <code>vercel.json</code> to define these through JSON,
-      you can also express your routing configuration as code using
-      <a href="https://vercel.com/docs/concepts/functions/edge-middleware"
-        >Vercel Edge Middleware</a
-      >.
-    </p>
-    <p>
-      Middleware runs before the
-      <a href="https://vercel.com/docs/concepts/edge-network/caching"
-        >Vercel Edge Network Cache</a
-      >, so you can configure routing exactly as your application needs. For
-      example, this template uses <code>middleware.js</code> defined in the root
-      of the repository to add additional security headers to the site:
-    </p>
-    <pre><code>referrer-policy: origin-when-cross-origin
-strict-transport-security: max-age=31536000; includeSubDomains; preload
-x-content-type-options: nosniff
-x-dns-prefetch-control: on
-x-frame-options: DENY</code></pre>
-    <p>
-      Learn more about
-      <a href="https://vercel.com/docs/concepts/functions/edge-middleware"
-        >Vercel Edge Middleware</a
-      >.
-    </p>
-  </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YOU OWE ME - Yen</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: #1a1a1a;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .poster {
+            background: #000;
+            border: 12px solid #333;
+            width: 100%;
+            max-width: 1000px;
+            padding: 30px;
+            display: grid;
+            grid-template-columns: 300px 1fr 200px;
+            gap: 25px;
+            align-items: flex-start;
+        }
+        
+        .album-section {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .album-cover {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 1;
+            margin-bottom: 12px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8);
+        }
+        
+        .album-cover-border {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, #ff6b35 0%, #ff4500 50%, #d32f2f 100%);
+            padding: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .album-cover-border::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: repeating-linear-gradient(
+                45deg,
+                rgba(255, 255, 255, 0.15),
+                rgba(255, 255, 255, 0.15) 1px,
+                transparent 1px,
+                transparent 3px
+            );
+            z-index: 2;
+        }
+        
+        .album-cover img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .album-title {
+            color: #fff;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 4px;
+            text-align: center;
+        }
+        
+        .album-artist {
+            color: #999;
+            font-size: 13px;
+            text-align: center;
+            letter-spacing: 0.5px;
+        }
+        
+        .tracks-section {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .track-item {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 10px;
+            font-size: 12px;
+            color: #aaa;
+            line-height: 1.4;
+        }
+        
+        .track-num {
+            color: #ccc;
+            font-weight: 600;
+            min-width: 18px;
+            flex-shrink: 0;
+        }
+        
+        .track-name {
+            color: #ccc;
+            word-break: break-word;
+        }
+        
+        /* Make the track name a clickable link that opens Spotify */
+        .track-name a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        
+        .track-name a:hover {
+            color: #1ed760;
+            text-decoration: underline;
+        }
+        
+        .info-section {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            font-size: 12px;
+        }
+        
+        .info-item {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        
+        .info-label {
+            font-size: 10px;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+        }
+        
+        .info-value {
+            color: #ccc;
+            font-size: 13px;
+        }
+        
+        .spotify-badge {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 8px;
+            padding: 8px 10px;
+            background: rgba(30, 215, 96, 0.1);
+            border-radius: 3px;
+            border: 1px solid rgba(30, 215, 96, 0.3);
+        }
+        
+        .spotify-icon {
+            width: 14px;
+            height: 14px;
+            background: #1ed760;
+            border-radius: 2px;
+            flex-shrink: 0;
+        }
+        
+        .spotify-text {
+            font-size: 11px;
+            color: #888;
+        }
+        
+        .color-swatches {
+            display: flex;
+            gap: 6px;
+            margin-top: 12px;
+            justify-content: center;
+        }
+        
+        .swatch {
+            width: 20px;
+            height: 20px;
+            border-radius: 2px;
+            border: 1px solid #555;
+        }
+        
+        .swatch-orange {
+            background: #ff6b35;
+        }
+        
+        .swatch-red {
+            background: #ff4500;
+        }
+        
+        .swatch-dark {
+            background: #1a1a1a;
+        }
+        
+        @media (max-width: 900px) {
+            .poster {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .album-section {
+                max-width: 320px;
+            }
+            
+            .album-cover {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="poster">
+        <div class="album-section">
+            <div class="album-cover">
+                <div class="album-cover-border">
+                    <img src="https://i.scdn.co/image/ab67616d0000b27336440afd46ace6ce87892ec2" alt="YOU OWE ME">
+                </div>
+            </div>
+            <div class="album-title">YOU OWE ME</div>
+            <div class="album-artist">yen</div>
+            <div class="color-swatches">
+                <div class="swatch swatch-orange"></div>
+                <div class="swatch swatch-red"></div>
+                <div class="swatch swatch-dark"></div>
+            </div>
+        </div>
+        
+        <div class="tracks-section">
+            <div class="track-item">
+                <span class="track-num">1.</span>
+                <span class="track-name"><a href="https://open.spotify.com/album/0nirisoiptjwBbzv0HIR0n?si=5a75c13ab40c46b4" target="_blank" rel="noopener">IN YOUR FACE</a></span>
+            </div>
+            <div class="track-item">
+                <span class="track-num">2.</span>
+                <span class="track-name"><a href="https://open.spotify.com/album/0nirisoiptjwBbzv0HIR0n?si=5a75c13ab40c46b4" target="_blank" rel="noopener">DIGITAL ROCKSTARR</a></span>
+            </div>
+            <div class="track-item">
+                <span class="track-num">3.</span>
+                <span class="track-name"><a href="https://open.spotify.com/album/0nirisoiptjwBbzv0HIR0n?si=5a75c13ab40c46b4" target="_blank" rel="noopener">NOT A PHASE</a></span>
+            </div>
+            <div class="track-item">
+                <span class="track-num">4.</span>
+                <span class="track-name"><a href="https://open.spotify.com/album/0nirisoiptjwBbzv0HIR0n?si=5a75c13ab40c46b4" target="_blank" rel="noopener">I HAVE NOTHING</a></span>
+            </div>
+            <div class="track-item">
+                <span class="track-num">5.</span>
+                <span class="track-name"><a href="https://open.spotify.com/album/0nirisoiptjwBbzv0HIR0n?si=5a75c13ab40c46b4" target="_blank" rel="noopener">POSER PROBLEM</a></span>
+            </div>
+            <div class="track-item">
+                <span class="track-num">6.</span>
+                <span class="track-name"><a href="https://open.spotify.com/album/0nirisoiptjwBbzv0HIR0n?si=5a75c13ab40c46b4" target="_blank" rel="noopener">REASON I SHOULD STAY</a></span>
+            </div>
+            <div class="track-item">
+                <span class="track-num">7.</span>
+                <span class="track-name"><a href="https://open.spotify.com/album/0nirisoiptjwBbzv0HIR0n?si=5a75c13ab40c46b4" target="_blank" rel="noopener">YOU RULE STAY CRUEL</a></span>
+            </div>
+            <div class="track-item">
+                <span class="track-num">8.</span>
+                <span class="track-name"><a href="https://open.spotify.com/album/0nirisoiptjwBbzv0HIR0n?si=5a75c13ab40c46b4" target="_blank" rel="noopener">FINNA FUCKIN THROW UP</a></span>
+            </div>
+            <div class="track-item">
+                <span class="track-num">9.</span>
+                <span class="track-name"><a href="https://open.spotify.com/album/0nirisoiptjwBbzv0HIR0n?si=5a75c13ab40c46b4" target="_blank" rel="noopener">FEEL MY WRATH</a></span>
+            </div>
+        </div>
+        
+        <div class="info-section">
+            <div class="info-item">
+                <div class="info-label">Release Date</div>
+                <div class="info-value">Aug 7, 2026</div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">Album Length</div>
+                <div class="info-value">~12 min</div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">Record Label</div>
+                <div class="info-value">Yen</div>
+            </div>
+            <div class="spotify-badge">
+                <div class="spotify-icon"></div>
+                <div class="spotify-text">Stream it</div>
+            </div>
+        </div>
+    </div>
+</body>
 </html>
